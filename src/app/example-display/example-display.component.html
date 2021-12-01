@@ -3,7 +3,16 @@
         <h1>
             Dynamic Table
         </h1>
-
+        <p>
+            This is a dynamic table that can take an array of objects and diplay them in a table using the ColumnConfigs and SortOptions. <br/>
+            There are 3 Inputs this component needs
+        </p>
+        <ol>
+            <li> ColumnConfigs - This is an array that holds the column information for the table. This is where the property, header, column order, any css for the property, and if the column is sortable.</li>
+            <li> Items - This is an array of objects that can be of any type. The Column config will determin the order and any css that will be applied to the property</li>
+            <li> SortOptions - Holds the information for sorting and pagination </li>
+        </ol>
+        <br/>
         <dynamic-table id="employeeTable" 
                        [columnConfigs]="dynamicTableService.columnConfigs"
                        [items]="dynamicTableService.sampleData"
