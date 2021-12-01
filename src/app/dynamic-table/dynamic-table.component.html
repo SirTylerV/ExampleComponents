@@ -1,0 +1,27 @@
+<table mat-table [dataSource]="displayItems" matSort (matSortChange)="updateSortOptions($event)" [matSortActive]="sortOptions.property" [matSortDirection]="sortOptions.direction" matSortDisableClear>
+    <ng-container *ngFor="let occ of orderedColumnConfigs" [cdkColumnDef]="occ.headerTitle">
+        <ng-container *ngIf="occ.isSortable; else notSortable">
+            <th class="sort-arrow" cdk-header-cell *cdkHeaderCellDef class="ec-pointer" [mat-sort-header]="occ.property" [sortActionDescription]="occ.property">
+                {{ occ.headerTitle }}
+            </th>
+        </ng-container>
+        <ng-template #notSortable>
+            <th cdk-header-cell *cdkHeaderCellDef>
+                {{ occ.headerTitle }}
+            </th>
+        </ng-template>
+
+        <td cdk-cell *cdkCellDef="let item" class="{{occ.cssStyles}}"> {{ getData(item, occ) }} </td>
+    </ng-container>
+
+    <tr cdk-header-row *cdkHeaderRowDef="displayHeaders"></tr>
+    <tr class="table-border" cdk-row *cdkRowDef="let row; columns: displayHeaders;"></tr>
+</table>
+<mat-paginator [length]="items.length"
+               [pageIndex]="sortOptions.pageNumber"
+               [pageSize]="sortOptions.pageSize"
+               [pageSizeOptions]="sortOptions.pageSizeOptions"
+               (page)="updatePage($event)"
+               aria-label="Select page">
+</mat-paginator>
+

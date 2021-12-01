@@ -1,0 +1,15 @@
+<mat-tab-group>
+    <mat-tab label="Dynamic Table">
+        <h1>
+            Dynamic Table
+        </h1>
+
+        <dynamic-table id="employeeTable" 
+                       [columnConfigs]="dynamicTableService.columnConfigs"
+                       [items]="dynamicTableService.sampleData"
+                       [sortOptions]="dynamicTableService.sortOptions">
+        </dynamic-table>
+    </mat-tab>
+</mat-tab-group>
+
+
